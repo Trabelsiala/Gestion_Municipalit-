@@ -1,0 +1,39 @@
+{% extends 'backtemplate/outilsback.html.twig'%}
+
+{% block title%}Outils index {%endblock%}
+
+{% block body %}
+    <h1>Outils</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label_out</th>
+                <th>Quantite</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for outil in outils %}
+            <tr>
+                <td>{{ outil.id }}</td>
+                <td>{{ outil.labelOut }}</td>
+                <td>{{ outil.quantite }}</td>
+                <td><img id="img"  class="card-img-top img-fluid" style="height: 150px; width:250px;" src="/uploads/{{outil.image}}"></td>
+                <td>
+                    <a class= "btn" href="{{ path('app_outils_show', {'id': outil.id}) }}">show</a>
+                    <a class= "btn" href="{{ path('app_outils_edit', {'id': outil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class= "btn" href="{{ path('app_outils_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'backtemplate/reservationback.html.twig' %}
+{% block title%} Reservation {%endblock%}
+
+
+
+{% block body %}
+    <h1>Reservation </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_res</th>
+                <th>Date_lim</th>
+                <th>actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateRes ? reservation.dateRes|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.dateLim ? reservation.dateLim|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a  class="btn" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a  class="btn" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a class= "btn" href="{{ path('app_reservation_new') }}">Create new</a> #}
+{% endblock %}

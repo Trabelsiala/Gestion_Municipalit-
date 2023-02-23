@@ -1,0 +1,12 @@
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+{{ form_label(form.date_res,"Date Debut") }} 
+    {{ form_widget(form.date_res,{'attr': {'class':'form-control'}}) }} 
+     {{ form_errors(form.date_res) }} 
+
+{{ form_label(form.date_lim,"Date fin") }} 
+    {{ form_widget(form.date_lim,{'attr': {'class':'form-control'}}) }} 
+     {{ form_errors(form.date_lim) }}
+    
+  <button class="btn btn-dark">{{ button_label|default('Reserve') }}</button> 
+{{ form_end(form) }}

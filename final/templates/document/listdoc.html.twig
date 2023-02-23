@@ -1,0 +1,33 @@
+{% extends 'front/index.html.twig' %}
+
+
+{% block body %}
+    <h1>Document index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document in documents %}
+            <tr>
+                <td>{{ document.id }}</td>
+                <td>{{ document.name }}</td>
+                <td><td><img id="img"  class="card-img-top img-fluid" style="height: 150px; width:250px;" src="/uploads/{{document.image}}"></td></td>
+                
+            
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
